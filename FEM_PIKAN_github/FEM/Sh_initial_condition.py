@@ -4,6 +4,10 @@ from FEM.Sh_cache import var
 from FEM.Sh_material_initial import mat
 import taichi as ti
 
+# !c==========================================c
+# !c       Define the initial condition       c
+# !c==========================================c
+# !c
 @ti.kernel
 def get_initial_force():
     # Initial displacement & velocity fields of nodes

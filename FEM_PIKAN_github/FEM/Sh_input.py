@@ -4,7 +4,7 @@ from FEM.Sh_cache import var
 from FEM.Sh_material_initial import mat
 # from FEM.Sh_coordinate_system import Sh_coordinate_system
 from FEM.Sh_coordinate_system_stiff import *
-from FEM.Sh_direct_find import *
+from FEM.Sh_cal_dshape import *
 from FEM.Sh_initial_condition import *
 from FEM.Sh_external_force import *
 from FEM.Sh_Essential_bound import *
@@ -54,7 +54,6 @@ class Sh_input:
         if i_ask_fhead == 1:
             fhead = input("Please input the head of the files name: ")
         else:
-            # Set the default file head (For example: 'box_stone_1d5mm')
             fhead = 'InputModel/plate_0.05'
 
         # Assign file names with appended extensions
@@ -86,12 +85,10 @@ class Sh_input:
         s_stiffness = params.s_stiffness[None]
         if s_stiffness == 1:
             Sh_coordinate_system_stiff()
-        # else:
-        #     Sh_coordinate_system()
 
         self.get_input2()
 
-        Sh_direct_find()
+        Sh_cal_dshape()
 
         self.get_input3()
         

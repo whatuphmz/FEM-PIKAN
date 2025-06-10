@@ -4,6 +4,10 @@ from FEM.Sh_cache import var
 from FEM.Sh_material_initial import mat
 import taichi as ti
 
+# !c===============================================c
+# !c     Calculate the external force vector       c
+# !c===============================================c
+# !c
 @ti.kernel
 def Sh_external_force():
 

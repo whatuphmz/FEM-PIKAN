@@ -4,20 +4,13 @@ from FEM.Gaussian import *
 from FEM.Evl_fem_shape4 import *
 import taichi as ti
 
+# !c============================================c
+# !c   Compute shape functions and derivatives  c
+# !c        at Gauss points for shell FEM       c
+# !c============================================c
+# !c
 @ti.kernel
-def Sh_direct_find():
-    # !c==========================================c
-    # !c   Searching nodes for each gauss point   c
-    # !c      already have array s_nele_node      c
-    # !c==========================================c
-    # !c
-    print('*** Searching is done!')
-    #!c==========================================c
-    #!c **Eval and store Shape function NJ(xk):  c
-    #!c    the shape functions at gaussion       c
-    #!c     points in the support of any nodes   c
-    #!c==========================================c
-    #!c
+def Sh_cal_dshape():
     s_maxntg = params.s_maxntg[None]
     gp_loc1D, gp_weight1D = gauss1D(s_maxntg)
     var.s_shpk.fill(0.0)

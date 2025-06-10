@@ -5,6 +5,11 @@ from FEM.Sh_material_initial import mat
 from FEM.Gaussian import *
 import taichi as ti
 
+# !c==========================================c
+# !c   calculate the fiber direction          c
+# !c                at each step              c
+# !c==========================================c
+# !c
 @ti.kernel
 def Sh_update_fiber_quater():
     s_e_fi_last3 = ti.Vector([0.0, 0.0, 0.0])

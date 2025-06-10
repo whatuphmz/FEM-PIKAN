@@ -3,7 +3,11 @@ import torch
 import taichi as ti
 from FEM.Sh_parameter import params
 
-
+# !c==========================================c
+# !c   Allocate memory to variable &          c
+# !c      Initialization for the variable     c
+# !c==========================================c
+# !c
 @ti.data_oriented
 class Sh_variable_allocate:
     def __init__(self):

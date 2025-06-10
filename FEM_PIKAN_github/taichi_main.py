@@ -15,7 +15,55 @@ from FEM.Sh_output_paraview_ascii import *
 from HRKAN import *
 import pandas as pd
 import math
+"""
+PIKAN-FEM Solver for Complex Shell Structures
 
+This program implements a novel hybrid approach for predicting static responses of complex shell structures by:
+
+1. Coupling Physics-Informed Kolmogorov-Arnold Networks (PIKAN) with the Finite Element Method (FEM)
+2. Utilizing Sigmoid High-Order ReLU-KAN (HRKAN) architectures to approximate displacement and rotation fields
+3. Enforcing physical constraints through FEM equilibrium equations
+
+Key Methodology:
+----------------
+- Neural Network Component:
+   - HRKAN networks predict 6 degrees of freedom (3 translations + 3 rotations)
+   - Separate network instances for each DOF (steps dimension)
+   - Piecewise polynomial activations for high-order approximation
+
+- FEM Integration:
+   - Internal force calculations based on predicted displacements
+   - Physical equilibrium enforcement: Fint = Fext
+   - Stiffness matrix assembly and updates
+
+- Optimization Framework:
+   - Physics-informed loss function: ||Fint - Fext||²
+   - AMSGrad optimizer with gradient-based updates
+   - Adaptive scaling for displacement/rotation components
+
+Innovative Aspects:
+-------------------
+1. Hybrid Approach:
+   - Combines expressive power of KANs with physics rigor of FEM
+   - Maintains consistency with fundamental conservation laws
+
+2. Computational Efficiency:
+   - GPU acceleration via Taichi for large-scale simulations
+   - Batch processing of FEM nodes
+   - Parallel computation of stiffness matrices
+
+3. Physical Consistency:
+   - Direct enforcement of force equilibrium constraints
+   - Special handling of boundary conditions (ibtype=200)
+   - Material and geometric nonlinearity support
+
+Outputs:
+--------
+- Displacement and rotation predictions
+- Force equilibrium error metrics
+- Training progression logs and visualizations
+- Paraview-compatible result files
+"""
 
 TRAIN = True
 

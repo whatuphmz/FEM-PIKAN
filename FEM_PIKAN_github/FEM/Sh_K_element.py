@@ -5,6 +5,11 @@ from FEM.Gaussian import *
 from FEM.Evl_fem_shape4 import *
 import taichi as ti
 
+# !c================================================c
+# !c   Compute element stiffness matrices for       c
+# !c        shell FEM using Gaussian quadrature     c
+# !c================================================c
+# !c
 @ti.kernel
 def Sh_K_element():
     s_maxntg = params.s_maxntg[None]
@@ -19,8 +24,6 @@ def Sh_K_element():
     var.Bw_T.fill(0.0)
     ntg = s_maxntg
     gp_loc1D, gp_weight1D = gauss1D(ntg)
-    s = 10e-5
-    k1 = k2 = k3 = k =0.0
 
     for ik in range(var.s_mgk[None]):
         nTmp = ti.Vector([0.0, 0.0, 1.0])

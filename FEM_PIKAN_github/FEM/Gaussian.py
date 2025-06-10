@@ -1,8 +1,11 @@
 import taichi as ti
 from FEM.Sh_cache import var
 
-
-
+# !c=========================================================c
+# !c     subroutine to give gaussian pts (up to 5) of 1D    c
+# !c     for intergration over -1 to 1                       c
+# !c=========================================================c
+# !c
 @ti.func
 def gauss1D(nint):
 

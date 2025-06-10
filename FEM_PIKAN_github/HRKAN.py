@@ -2,6 +2,50 @@ import taichi as ti
 import numpy as np
 import pickle as pkl
 from FEM.Sh_cache import var
+"""
+Sigmoid High-Order ReLU-Kolmogorov Arnold Networks (HRKAN) Implementation
+
+This module implements three variations of High-Order ReLU-KAN layers using Taichi for GPU acceleration:
+
+1. HRKAN_input: 
+   - Input layer variant without batch normalization
+   - Directly processes raw inputs using high-order piecewise polynomial activations
+   - Suitable for first network layer
+
+2. HRKAN:
+   - Standard hidden layer with batch normalization
+   - Applies sigmoid to normalized inputs before polynomial activation
+   - Designed for intermediate processing
+
+3. HRKAN_output:
+   - Output layer with conditional computation
+   - Skips processing for specific cases (s_ibtype == 200)
+   - Includes batch normalization and sigmoid
+
+Key Features:
+- Implements high-order (>1) ReLU-KAN formulations
+- Supports multiple independent models (e.g., for 6DOF systems)
+- Each "step" (n_steps dimension) represents a separate network instance
+- Piecewise polynomial activations defined over configurable grid ranges
+- Batched processing for efficient computation
+- Weight initialization, forward propagation, and serialization utilities
+
+Structure:
+- Grid-based basis functions with (G + k) components per input feature
+- High-order polynomial terms controlled by 'order' parameter
+- Parameters: coef (weights), phase_low/phases_height (grid boundaries)
+- Batch normalization applied in hidden/output layers
+
+Typical Usage:
+1. Initialize with model dimensions (input/hidden/output)
+2. Configure grid parameters (G, k, range, polynomial order)
+3. Call weights_init() for parameter initialization
+4. For each epoch, call forward() with input data
+5. Access results through output field
+
+Note: The n_steps dimension represents independent network instances 
+(not sequential time steps), enabling parallel processing of different DOFs.
+"""
 
 real = ti.f32
 scalar = lambda: ti.field(dtype=real)

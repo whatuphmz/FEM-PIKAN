@@ -3,7 +3,12 @@ from FEM.Sh_parameter import params
 from FEM.Sh_cache import var
 from FEM.ReadALine import *
 import taichi as ti
-  
+
+# !c==========================================c
+# !c  Essential Boundary Condition :          c
+# !c    Consistent BC Method                  c
+# !c==========================================c
+# !c
 @ti.kernel
 def Sh_essential_bound():
     angular_same = 1

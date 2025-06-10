@@ -1,6 +1,30 @@
 import taichi as ti
 import numpy as np
+'''
+This module defines a suite of gradient-based optimization algorithms tailored for neural network training with Taichi. 
 
+Implemented optimizers:
+  - AMSGrad: An adaptive moment estimation method with variance rectification.
+  - AdaMax: A variant of Adam using the infinity norm.
+  - AdamW: Adam with decoupled weight decay for improved regularization.
+  - NAdam: Adam with Nesterov momentum.
+  - Adam: Standard Adam optimizer.
+  - RMSProp: Root Mean Square Propagation for adaptive learning rates.
+  - Adagrad: Adaptive gradient algorithm adjusting learning rate per parameter.
+  - Momentum: Classical momentum-based SGD.
+  - SGD (with line search): Stochastic gradient descent enhanced by grid-based learning rate search.
+
+Each optimizer class is data-oriented and expects a list of Taichi fields (network parameters) as input. 
+The `step()` method updates parameter values based on computed gradients, while `zero_grad()` resets gradients to zero.
+
+Usage:
+    params = [weight_field1, weight_field2, ...]
+    opt = Adam(params, lr=0.001)
+    for epoch in range(num_epochs):
+        # compute loss and backpropagate gradients
+        opt.step()
+        opt.zero_grad()
+'''
 
 @ti.data_oriented
 class AMSGrad():

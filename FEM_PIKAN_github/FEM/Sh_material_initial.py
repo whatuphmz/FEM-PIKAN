@@ -3,7 +3,12 @@ import torch
 import taichi as ti
 from FEM.Sh_parameter import params
 
-
+# !c<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>c
+# !c                                          c
+# !c  **material Properties initialization**  c
+# !c                                          c
+# !c<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>c
+# !c
 @ti.data_oriented
 class Sh_material_initial:
     def __init__(self):

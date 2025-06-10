@@ -15,13 +15,6 @@ def read_a_line(input_file, output_file):
     # !c       line will be ignored.                           c
     # !c=======================================================c
     # !c
-    
-    
-    # !c===============================================c
-    # !c   将test.inp中文档读取出来,在写出到test.echo中    c
-    # !c          以查看读取输入参数有无错误               c
-    # !c===============================================c
-    # !c
     read_ok = False  # Flag to indicate a proper input line has been found
 
     while not read_ok:

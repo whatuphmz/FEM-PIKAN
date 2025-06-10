@@ -5,6 +5,13 @@ from FEM.Sh_cache import var
 from FEM.Gaussian import *
 from FEM.Evl_fem_shape4 import *
 
+# !c<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>c
+# !c   Calculate:                             c
+# !c         Lamina coordinate system         c
+# !c         Fiber coordinate system          c
+# !c   The fiber direction of the stiff point c
+# !c<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>c
+# !c
 @ti.kernel
 def Sh_coordinate_system_stiff():
     # Loop over Gauss points
