@@ -5,7 +5,7 @@ While traditional Physics-Informed Neural Networks (PINNs) often struggle with l
 The schematic of FEM-PIKAN is as follows:
 
 <p align="center">
-<img src="FEM_PIKAN_github/images/Schematic of FEM-PIKAN.pdf" width="600">
+<img src="FEM_PIKAN_github/images/Schematic of FEM-PIKAN.png" width="600">
 </p>
 
 For more information, please refer to the following: (https://github.com/whatuphmz/FEM-PIKAN)
